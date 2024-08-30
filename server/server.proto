@@ -22,7 +22,7 @@ service HelloService{
 
 // Hello request
 message HelloRequest{
-    string username = 1;
+    string message = 1;
 }
 
 // Hello response

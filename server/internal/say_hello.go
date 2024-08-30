@@ -12,18 +12,18 @@ import (
 // Say Hello handler
 //
 // SayHello is Unary RPC
-// it's like Request and Response like http/1 request
+// it's like Request and Response like http/1
 func (*grpcServer) SayHello(
 	ctx context.Context,
 	req *server.HelloRequest,
 ) (*server.HelloResponse, error) {
 
 	// handling when username empty
-	if req.Username == "" {
-		return nil, status.Error(codes.InvalidArgument, "`username` required")
+	if req.Message == "" {
+		return nil, status.Error(codes.InvalidArgument, "`message` required")
 	}
 
 	return &server.HelloResponse{
-		Message: fmt.Sprintf("Hello %s", req.Username),
+		Message: fmt.Sprintf("Reply : %s", req.Message),
 	}, nil
 }
