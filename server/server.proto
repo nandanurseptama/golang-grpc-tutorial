@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+// mapping proto into go package
+option go_package = "github.com/nandanurseptama/golang-grpc-tutorial/server";
+
+package server;
+
+// Create new service called `HelloService`
+service HelloService{
+    // Unary RPC Request
+    rpc SayHello(HelloRequest) returns(HelloResponse);
+
+    // Server streaming RPC
+    rpc ServerStreamHello(HelloRequest) returns(stream HelloResponse);
+
+    // Client streaming RPC
+    rpc ClientStreamHello(stream HelloRequest) returns (HelloResponse);
+
+    // Bidirectional Streaming RPC
+    rpc StreamHello(stream HelloRequest) returns (stream HelloResponse);
+}
+
+// Hello request
+message HelloRequest{
+    string username = 1;
+}
+
+// Hello response
+message HelloResponse{
+    string message = 1;
+}
